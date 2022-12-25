@@ -7,19 +7,31 @@ module.exports = {
         "./nuxt.config.{js,ts}",
     ],
     plugins: [
-        require('@tailwindcss/forms'),
+        require("@tailwindcss/forms")({
+            strategy: 'base', // only generate global styles
+        }),
     ],
     theme: {
         colors: {
             login: '#FED49A',
             black: '#000000',
-            circle: '#CE7DA5'
+            white: '#ffffff',
+            brand: '#CE7DA5',
+            red: '#ff0000',
+            transparent: 'rgba(0,0,0,0)'
         },
         extend: {
             fontFamily: {
                 sans: ['ALS Hauss', 'Helvetica', 'sans-serif'],
                 mono: ['ALSHauss-BlackExpanded', 'Helvetica', 'sans-serif']
             }
+        },
+        minWidth: {
+            '600': '600px',
+        },
+        minHeight: {
+            '400': '400px',
+            'screen': '100vh',
         }
     },
 };

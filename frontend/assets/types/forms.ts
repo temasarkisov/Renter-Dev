@@ -4,6 +4,7 @@ interface typeFormElement {
     type: 'text' | 'password' | 'email' | 'number' | 'url' | 'date' | 'datetime-local' | 'month' | 'week' | 'time' | 'search' | 'tel' | 'checkbox' | 'radio' | 'select' | 'select-multiple';
     value: any;
     placeholder: string;
+    validate: boolean | null;
 }
 
 interface submitTypes {
@@ -23,8 +24,17 @@ interface loginType {
     route: routerTypes;
 }
 
+interface registerType {
+    login: typeFormElement;
+    password: typeFormElement;
+    password2: typeFormElement;
+    submit: submitTypes;
+    route: routerTypes;
+}
+
 export {
     loginType,
     submitTypes,
-    typeFormElement
+    typeFormElement,
+    registerType
 }
