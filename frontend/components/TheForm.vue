@@ -13,7 +13,7 @@
               ]"
               :placeholder="value[item].placeholder"
               autocomplete=""
-              @focus="$emit('inputFocus', item)"
+              @focus="$emit('blur', item)"
           >
         </label>
       </template>
@@ -45,7 +45,7 @@
               class="border-0 outline-none text-white bg-transparent mb-0 w-full focus:ring-transparent"
               :placeholder="value[item][child].placeholder"
               autocomplete=""
-              @focus="$emit('inputFocus', { item, child })"
+              @focus="$emit('blur', { item, child })"
           >
         </label>
       </div>
