@@ -1,0 +1,15 @@
+backend/app/go.mod
+backend/app/go.sum
+backend/app/vendor
+backend/app/configs/config.yml
+backend/app/docs/*
+
+backend/pg_data
+frontend/node_modules
+frontend/.nuxt
+/frontend/.nuxt/
+/.idea/modules.xml
+/.idea/Renter-Dev.iml
+/.idea/vcs.xml
+/.idea/watcherTasks.xml
+/.idea/.gitignore

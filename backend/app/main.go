@@ -66,7 +66,7 @@ func main() {
 }
 
 func initConfig() error {
-	viper.AddConfigPath("./app/configs")
+	viper.AddConfigPath("./configs")
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
 	return viper.ReadInConfig()
