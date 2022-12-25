@@ -16,6 +16,7 @@ module.exports = {
             login: '#FED49A',
             black: '#000000',
             white: '#ffffff',
+            'white-70': 'rgba(255,255,255,0.7)',
             brand: '#CE7DA5',
             red: '#ff0000',
             transparent: 'rgba(0,0,0,0)'
