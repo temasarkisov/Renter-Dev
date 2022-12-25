@@ -32,9 +32,24 @@ interface registerType {
     route: routerTypes;
 }
 
+interface searchType {
+    name: typeFormElement;
+    neighbourhood: typeFormElement;
+    price: {
+        min: typeFormElement;
+        max: typeFormElement;
+    }
+    date: {
+        start: typeFormElement;
+        finish: typeFormElement;
+    }
+    submit: submitTypes;
+}
+
 export {
     loginType,
     submitTypes,
     typeFormElement,
-    registerType
+    registerType,
+    searchType
 }

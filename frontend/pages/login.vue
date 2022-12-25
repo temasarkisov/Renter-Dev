@@ -12,8 +12,8 @@
                 class="relative z-1"
                 ref="form"
                 v-model="form"
-                @submit="submitForm"
-                @inputFocus="inputFocus"
+                @submit="validateForm"
+                @inputFocus="(payload) => validateForm(true, payload)"
             />
           </div>
         </div>
@@ -37,61 +37,34 @@ import { loginType } from '../assets/types/forms';
 
 export default class Login extends Vue {
   form: loginType = {
-    login: {
-      type: 'email',
-      placeholder: 'Login',
-      value: null,
-      validate: true,
-    },
-    password: {
-      type: 'password',
-      placeholder: 'Password',
-      value: null,
-      validate: true,
-    },
-    submit: {
-      type: 'submit',
-      text: 'Sign In'
-    },
-    route: {
-      text: 'Sign up',
-      to: {
-        name: 'register'
-      }
+    login: { type: 'email', placeholder: 'Login', value: null, validate: true },
+    password: { type: 'password', placeholder: 'Password', value: null, validate: true },
+    submit: { type: 'submit', text: 'Sign In' },
+    route: { text: 'Sign up', to: { name: 'register' } }
+  }
+
+  submitForm() {
+    if (this.isValidForm) {
+      console.log('next');
+    }
+  }
+
+  validateForm(blur = false, payload: any) {
+    if (blur) {
+      Object.entries(this.form).forEach(([key, item]) => {
+        if (typeof payload === 'string' && (key === payload)) {
+          item.validate = true;
+        }
+      });
+    } else {
+      this.form.login.validate = Boolean(/^([a-z0-9-!#$%&'*+/=?^_`]+\.)*[a-z0-9-!#$%&'*+/=?^_`]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,}$/i.test(String(this.form.login.value)));
+      this.form.password.validate = Boolean(this.form.password.value && this.form.password.value.length >= 6);
+      this.submitForm();
     }
   }
 
   get isValidForm() {
-    return Boolean(
-        Object.entries(this.form).reduce((acc, [, item]): any => (item && item.validate ? [...acc, item.validate] : acc), []).length === 2
-    );
-  }
-
-  submitForm() {
-    this.validateForm();
-
-    if (this.isValidForm) {
-      console.log('to API');
-    }
-  }
-
-  validateForm() {
-    this.form.login.validate = Boolean(/^([a-z0-9-!#$%&'*+/=?^_`]+\.)*[a-z0-9-!#$%&'*+/=?^_`]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,}$/i.test(String(this.form.login.value)));
-    this.form.password.validate = Boolean(this.form.password.value && this.form.password.value.length >= 6);
-  }
-
-  inputFocus(key: string) {
-    switch (key) {
-      case 'login': {
-        this.form.login.validate = true;
-        break;
-      }
-      case 'password': {
-        this.form.password.validate = true;
-        break;
-      }
-      default: break;
-    }
+    return Boolean(this.form.login.validate && this.form.password.validate)
   }
 }
 </script>

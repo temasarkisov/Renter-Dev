@@ -32,6 +32,23 @@
             v-html="value[item].text"
         />
       </template>
+      <div v-else-if="isInputGroup(item)" class="flex justify-between sm:flex-nowrap flex-wrap">
+        <label v-for="child in Object.keys(value[item])"
+               :class="[
+                   'block sm:w-1/2 w-full border-2 mb-8 first:sm:rounded-l-xl first:sm:rounded-tr-none first:sm:rounded-br-none last:sm:rounded-r-xl last:sm:border-l-0 last:sm:rounded-tl-none last:sm:rounded-bl-none rounded-xl',
+                    { 'border-white': value[item][child].validate },
+                    { 'border-red': !value[item][child].validate }
+               ]"
+        >
+          <input
+              v-model="value[item][child].value" :type="value[item][child].type"
+              class="border-0 outline-none text-white bg-transparent mb-0 w-full focus:ring-transparent"
+              :placeholder="value[item][child].placeholder"
+              autocomplete=""
+              @focus="$emit('inputFocus', { item, child })"
+          >
+        </label>
+      </div>
 
     </template>
   </form>
@@ -60,6 +77,10 @@ export default class TheForm extends Vue {
 
   isSubmit(item: submitTypes) {
     return Boolean(item.type === 'submit' || item.type === 'button');
+  }
+
+  isInputGroup(item: string) {
+    return Boolean(item === 'price' || item === 'date');
   }
 }
 </script>
