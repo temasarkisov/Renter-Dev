@@ -42,7 +42,9 @@ export default class Index extends Vue {
     submit: { type: 'submit', text: 'Search' }
   }
 
+  // @ts-ignore
   submitForm(type: string) {
+    // @ts-ignore
     if (this.isValidForm(type)) {
       console.log('next');
     }

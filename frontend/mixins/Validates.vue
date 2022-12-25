@@ -1,4 +1,5 @@
 <script lang="ts">
+// @ts-nocheck
 import Vue from 'vue';
 import Component from 'vue-class-component';
 

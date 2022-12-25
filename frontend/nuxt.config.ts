@@ -1,7 +1,11 @@
 import type { NuxtConfig } from '@nuxt/types';
 
 const config: NuxtConfig = {
-    // target: 'static',
+   target: 'static',
+    server: {
+      host: '0.0.0.0',
+      port: 3000,
+    },
     head: {
         title: 'Renter-dev',
         meta: [
@@ -58,12 +62,12 @@ const config: NuxtConfig = {
         strategies: {
             local: {
                 token: {
-                    property: 'token.accessToken',
+                    property: 'token',
                     type: 'Token',
                     name: 'Authorization',
                 },
                 endpoints: {
-                    login: { url: '/api/auth/login', method: 'post' },
+                    login: { url: '/api/auth/sign-in', method: 'post' },
                     logout: { url: '/api/auth/logout', method: 'post' },
                     user: { url: '/api/auth/user', method: 'get' }
                 },

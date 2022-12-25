@@ -34,6 +34,7 @@ export default class Register extends Vue {
   }
 
   submitForm(type: string) {
+    // @ts-ignore
     if (this.isValidForm(type)) {
       console.log('next');
     }

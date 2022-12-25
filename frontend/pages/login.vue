@@ -32,7 +32,9 @@ export default class Login extends Vue {
     route: { text: 'Sign up', to: { name: 'register' } }
   }
 
+  // @ts-ignore
   submitForm(type: string) {
+    // @ts-ignore
     if (this.isValidForm(type)) {
       console.log('next');
     }

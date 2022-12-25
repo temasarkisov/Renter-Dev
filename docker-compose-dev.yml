@@ -3,14 +3,14 @@ version: '3.9'
 services:
   app:
     build:
-      context: .
-      dockerfile: backend/app/Dockerfile.dev
-    container_name: renter_app_dev
+      context: ./backend/app
+      dockerfile: Dockerfile.prod
+    container_name: app
     ports:
-      - 8003:8080
+      - 8000:8080
     restart: on-failure
     volumes:
-      - .:backend/app
+      - .:/backend/app
     depends_on:
       - postgresdb
 
@@ -40,6 +40,10 @@ services:
     build:
       context: .
       dockerfile: ./frontend/Dockerfile
+    volumes:
+      - ./frontend:/app/frontend
+    ports:
+      - 3000:3000
 
   nginx:
     container_name: renter_nginx_dev
@@ -52,10 +56,7 @@ services:
       - 81:81
       - 82:82
     depends_on:
-      - app_prod1
-      - app_prod2
-      - app_prod3
-      - app_dev
+      - app
 
 volumes:
   pg_data:

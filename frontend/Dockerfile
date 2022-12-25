@@ -18,5 +18,6 @@ RUN npm install
 # build app for production with minification
 WORKDIR /app/frontend
 
+EXPOSE 3000
 # see frontend/package.json:: "scripts": "dev" block
 CMD ["npm", "run", "dev"]

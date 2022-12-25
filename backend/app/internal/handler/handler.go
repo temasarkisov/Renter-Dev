@@ -1,14 +1,8 @@
 package handler
 
 import (
-	"net/http"
 	"renter/backend/app/internal/service"
-
-	_ "renter/backend/app/docs"
-
 	"github.com/gin-gonic/gin"
-	swaggerFiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 type Handler struct {
@@ -95,11 +89,6 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		{
 			bookings.GET("/", h.getBookings)
 		}
-
-		api.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-		api.GET("/", func(ctx *gin.Context) {
-			ctx.Redirect(http.StatusFound, "swagger/index.html")
-		})
 	}
 
 	return router
