@@ -47,16 +47,38 @@ import {
   },
 })
 export default class Default extends Vue {
+  /**
+   * @name isAuth
+   * @returns {boolean}
+   * @description Проверяем маршрут пользователя на странице регистрации или авторизации
+   */
   get isAuth(): boolean {
     return Boolean(this.$route.name && (this.$route.name === 'login' || this.$route.name === 'register'));
   }
+
+  /**
+   * @name isHome
+   * @returns {boolean}
+   * @description Проверяем маршрут пользователя на главной странице
+   */
   get isHome(): boolean {
     return Boolean(this.$route.name && (this.$route.name === 'index'));
   }
+
+  /**
+   * @name isList
+   * @returns {boolean}
+   * @description Проверяем маршрут пользователя на странице списка отелей
+   */
   get isList(): boolean {
     return Boolean(this.$route.name && (this.$route.name === 'list'));
   }
 
+  /**
+   * @name authHeaderContent
+   * @returns {string}
+   * @description Возвращаем текст заголовка в зависимости от текущего маршрута
+   */
   get authHeaderContent(): string {
     switch (String(this.$route.name)) {
       case 'login':

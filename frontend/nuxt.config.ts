@@ -1,7 +1,7 @@
 import type { NuxtConfig } from '@nuxt/types';
 
 const config: NuxtConfig = {
-   target: 'static',
+    target: 'static',
     server: {
       host: '0.0.0.0',
       port: 3000,

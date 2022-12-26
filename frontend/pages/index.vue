@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import TheForm from '../components/TheForm.vue';
-import Validates from '../mixins/Validates.vue';
+import Validates from '../mixins/Validates.ts';
 import { searchType } from '../assets/types/forms';
 
 import {
@@ -21,13 +21,15 @@ import {
 @Component({
   components: {
     TheForm
-  },
-  mixins: [
-    Validates
-  ]
+  }
 })
 
-export default class Index extends Vue {
+export default class Index extends Validates {
+  /**
+   * @name form
+   * @type object
+   * @description Форма поиска отелей
+   */
   form: searchType = {
     name: { type: 'text', value: null, placeholder: 'Name', validate: true },
     neighbourhood: { type: 'text', value: null, placeholder: 'Neighbourhood', validate: true },
@@ -39,14 +41,15 @@ export default class Index extends Vue {
       start: { type: 'date', value: null, placeholder: 'DD/MM/YYYY', validate: true },
       finish: { type: 'date', value: null, placeholder: 'DD/MM/YYYY', validate: true }
     },
-    submit: { type: 'submit', text: 'Search' }
+    submit: { type: 'submit', text: 'Search' },
+    type: 'index'
   }
 
-  // @ts-ignore
   submitForm(type: string) {
     // @ts-ignore
     if (this.isValidForm(type)) {
-      console.log('next');
+      console.log('good');
+      // this.clearStorageForm();
     }
   }
 }

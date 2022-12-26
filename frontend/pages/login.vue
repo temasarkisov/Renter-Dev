@@ -10,8 +10,8 @@
 
 <script lang="ts">
 import TheForm from '../components/TheForm.vue';
-import Validates from '../mixins/Validates.vue';
-import { Vue, Component } from 'nuxt-property-decorator';
+import Validates from '../mixins/Validates.ts';
+import { Component } from 'nuxt-property-decorator';
 import { loginType } from '../assets/types/forms';
 
 
@@ -19,24 +19,32 @@ import { loginType } from '../assets/types/forms';
   components: {
     TheForm,
   },
-  mixins: [
-    Validates
-  ],
 })
 
-export default class Login extends Vue {
+export default class Login extends Validates {
+  /**
+   * @name form
+   * @type object
+   * @description Форма авторизации
+   */
   form: loginType = {
     login: { type: 'email', placeholder: 'Login', value: null, validate: true },
     password: { type: 'password', placeholder: 'Password', value: null, validate: true },
     submit: { type: 'submit', text: 'Sign In' },
-    route: { text: 'Sign up', to: { name: 'register' } }
+    route: { text: 'Sign up', to: { name: 'register' } },
+    type: 'login'
   }
 
-  // @ts-ignore
+  /**
+    * @function
+    * @name submitForm
+    * @param type
+    * @description Подтверждение формы
+   */
   submitForm(type: string) {
     // @ts-ignore
     if (this.isValidForm(type)) {
-      console.log('next');
+      // this.clearStorageForm();
     }
   }
 }

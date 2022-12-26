@@ -22,6 +22,7 @@ interface loginType {
     password: typeFormElement;
     submit: submitTypes;
     route: routerTypes;
+    type: string;
 }
 
 interface registerType {
@@ -44,6 +45,7 @@ interface searchType {
         finish: typeFormElement;
     }
     submit: submitTypes;
+    type: string;
 }
 
 export {

@@ -64,10 +64,19 @@ import {
 export default class TheForm extends Vue {
   @Prop({ type: Object, required: true }) value: loginType
 
+  /**
+   * @name formItems
+   * @returns {string[]}
+   * @description Список ключей из объекта формы
+   */
   get formItems() {
     return Object.keys(this.value);
   }
 
+  /**
+   * @name isInput
+   * @returns {boolean}
+   */
   isInput(item: typeFormElement) {
     const validInputTypes = [
       'text', 'password', 'email', 'number', 'url', 'date', 'datetime-local', 'month', 'week', 'time', 'search', 'tel', 'checkbox', 'radio', 'select', 'select-multiple'
@@ -75,10 +84,18 @@ export default class TheForm extends Vue {
     return Boolean(validInputTypes.indexOf(item.type) > -1);
   }
 
+  /**
+   * @name isSubmit
+   * @returns {boolean}
+   */
   isSubmit(item: submitTypes) {
     return Boolean(item.type === 'submit' || item.type === 'button');
   }
 
+  /**
+   * @name isInputGroup
+   * @returns {boolean}
+   */
   isInputGroup(item: string) {
     return Boolean(item === 'price' || item === 'date');
   }
