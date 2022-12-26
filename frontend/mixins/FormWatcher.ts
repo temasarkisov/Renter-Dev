@@ -35,8 +35,6 @@ export default class extends Vue {
      * @description Сохранение данных формы в sessionStorage
      */
     storageForm(type: string, form: loginType & searchType & registerType) {
-        if (!process.client) return;
-
         const domainStorage = `${type}-form-data`;
         switch (type) {
             case 'login': {

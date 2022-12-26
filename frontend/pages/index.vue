@@ -48,8 +48,9 @@ export default class Index extends Validates {
   submitForm(type: string) {
     // @ts-ignore
     if (this.isValidForm(type)) {
-      console.log('good');
-      // this.clearStorageForm();
+      this.$router.push({
+        name: 'list'
+      });
     }
   }
 }

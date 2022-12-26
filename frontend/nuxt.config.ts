@@ -1,6 +1,7 @@
 import type { NuxtConfig } from '@nuxt/types';
 
 const config: NuxtConfig = {
+    ssr: false,
     target: 'static',
     server: {
       host: '0.0.0.0',
@@ -53,30 +54,7 @@ const config: NuxtConfig = {
     // env: {},
     modules: [
         '@nuxtjs/axios',
-        '@nuxtjs/auth-next',
-        'cookie-universal-nuxt',
     ],
-    auth: {
-        // @ts-ignore
-        redirect: false,
-        strategies: {
-            local: {
-                token: {
-                    property: 'token',
-                    type: 'Token',
-                    name: 'Authorization',
-                },
-                endpoints: {
-                    login: { url: '/api/auth/sign-in', method: 'post' },
-                    logout: { url: '/api/auth/logout', method: 'post' },
-                    user: { url: '/api/auth/user', method: 'get' }
-                },
-                user: {
-                    property: 'user',
-                },
-            }
-        },
-    },
     router: {
         middleware: [
             'auth-redirect'

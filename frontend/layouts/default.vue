@@ -71,7 +71,7 @@ export default class Default extends Vue {
    * @description Проверяем маршрут пользователя на странице списка отелей
    */
   get isList(): boolean {
-    return Boolean(this.$route.name && (this.$route.name === 'list'));
+    return Boolean(this.$route.name && (this.$route.name.indexOf('list') > -1));
   }
 
   /**

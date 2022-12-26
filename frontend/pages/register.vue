@@ -11,7 +11,7 @@
 <script lang="ts">
 import TheForm from '../components/TheForm.vue';
 import Validates from '../mixins/Validates.ts';
-import { Component } from 'nuxt-property-decorator';
+import { Action, Component } from 'nuxt-property-decorator';
 import { registerType } from '../assets/types/forms';
 
 @Component({
@@ -20,13 +20,14 @@ import { registerType } from '../assets/types/forms';
   }
 })
 export default class Register extends Validates {
+  @Action('user/REGISTER') userRegister: any
   /**
    * @name form
    * @type object
    * @description Форма регистрации
    */
   form: registerType = {
-    login: { type: 'email', placeholder: 'Login', value: null, validate: true },
+    login: { type: 'text', placeholder: 'Login', value: null, validate: true },
     password: { type: 'password', placeholder: 'Password', value: null, validate: true },
     password2: { type: 'password', placeholder: 'Repeat password', value: null, validate: true },
     submit: { type: 'submit', text: 'Sign Up' },
@@ -40,9 +41,8 @@ export default class Register extends Validates {
    * @description Подтверждение формы
    */
   submitForm(type: string) {
-    // @ts-ignore
     if (this.isValidForm(type)) {
-      // this.clearStorageForm();
+      this.userRegister().then(() => this.$router.push({ name: 'index' }));
     }
   }
 }

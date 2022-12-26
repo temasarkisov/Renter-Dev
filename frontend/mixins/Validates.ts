@@ -35,14 +35,16 @@ export default class extends FormWatcher {
         } else {
             switch (type) {
                 case 'login': {
-                    this.form.login.validate = Boolean(/^([a-z0-9-!#$%&'*+/=?^_`]+\.)*[a-z0-9-!#$%&'*+/=?^_`]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,}$/i.test(String(this.form.login.value)));
-                    this.form.password.validate = Boolean(this.form.password.value && this.form.password.value.length >= 6);
+                    // this.form.login.validate = Boolean(/^([a-z0-9-!#$%&'*+/=?^_`]+\.)*[a-z0-9-!#$%&'*+/=?^_`]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,}$/i.test(String(this.form.login.value)));
+                    this.form.login.validate = Boolean(this.form.login.value && this.form.login.value.length >= 4);
+                    this.form.password.validate = Boolean(this.form.password.value && this.form.password.value.length >= 4);
                     break;
                 }
                 case 'register': {
-                    this.form.login.validate = Boolean(/^([a-z0-9-!#$%&'*+/=?^_`]+\.)*[a-z0-9-!#$%&'*+/=?^_`]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,}$/i.test(String(this.form.login.value)));
-                    this.form.password.validate = Boolean(this.form.password.value && this.form.password.value.length >= 6);
-                    this.form.password2.validate = Boolean(this.form.password2.value && this.form.password2.value.length >= 6);
+                    // this.form.login.validate = Boolean(/^([a-z0-9-!#$%&'*+/=?^_`]+\.)*[a-z0-9-!#$%&'*+/=?^_`]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,}$/i.test(String(this.form.login.value)));
+                    this.form.login.validate = Boolean(this.form.login.value && this.form.login.value.length >= 4);
+                    this.form.password.validate = Boolean(this.form.password.value && this.form.password.value.length >= 4);
+                    this.form.password2.validate = Boolean(this.form.password2.value && this.form.password2.value.length >= 4);
                     break;
                 }
                 case 'index': {
@@ -82,7 +84,8 @@ export default class extends FormWatcher {
                 return Boolean(this.form.login.validate && this.form.password.validate && this.form.password2.validate);
             }
             case 'index': {
-                return Boolean(this.form.name.validate && this.form.neighbourhood.validate && this.form.price.min.validate && this.form.price.max.validate && this.form.date.start.validate && this.form.date.finish.validate);
+                return true;
+                // return Boolean(this.form.name.validate && this.form.neighbourhood.validate && this.form.price.min.validate && this.form.price.max.validate && this.form.date.start.validate && this.form.date.finish.validate);
             }
             default: return false;
         }
