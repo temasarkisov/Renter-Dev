@@ -16,7 +16,6 @@ export const state = (): userState => ({
 export const getters: GetterTree<userState, any> = {
     token: (statement) => statement.token,
     name: (statement) => statement.name,
-
 };
 
 export const mutations: MutationTree<userState> = {

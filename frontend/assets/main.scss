@@ -7,3 +7,62 @@
 body {
   -webkit-font-smoothing: antialiased;
 }
+
+.renter {
+  &__input, &__textarea {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 1);
+    border: 1.5px solid #000000;
+    border-radius: 15px;
+    padding: 11px 12px;
+
+    &:focus {
+      outline: none;
+      border-color: #000000;
+      box-shadow: none;
+    }
+  }
+  &__button {
+    border: 1.5px solid #000000;
+    border-radius: 15px;
+    min-width: 200px;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 1);
+    cursor: pointer!important;
+    outline: none;
+  }
+
+  &__date-picker {
+    input {
+      border: 1.5px solid #000000;
+      border-radius: 15px;
+      min-width: 200px;
+      min-height: 45px;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 20px;
+      color: rgba(0, 0, 0, 1);
+      cursor: pointer;
+      &:focus {
+        outline: none;
+        border-color: #000000;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.g-core-image-upload-form, .g-core-image-upload-btn {
+  cursor: pointer;
+}

@@ -4,7 +4,7 @@ const AuthMiddleware: Middleware = async (context: Context) => {
     const authToken = sessionStorage.getItem('authToken');
     if (authToken) context.store.commit('user/SET_TOKEN', authToken);
 
-    const authName = sessionStorage.getItem('authName');
+    const authName = sessionStorage.getItem('userName');
     if (authName) context.store.commit('user/SET_NAME', authName);
 
     /**

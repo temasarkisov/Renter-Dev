@@ -5,8 +5,11 @@
       { 'bg-login': isAuth }
   ]">
     <div class="container mx-auto sm:pl-0 px-5">
+      <the-profile-header
+          v-if="isProfile"
+      />
       <the-text-header
-          v-if="isAuth || isHome"
+          v-else-if="isAuth || isHome"
           :content="authHeaderContent"
           class="md:pt-12 pt-6"
       />
@@ -33,6 +36,7 @@
 <script lang="ts">
 import TheTextHeader from '../components/TheTextHeader.vue';
 import TheInnerHeader from '../components/TheInnerHeader.vue';
+import TheProfileHeader from '../components/TheProfileHeader.vue';
 
 
 import {
@@ -44,9 +48,18 @@ import {
   components: {
     TheTextHeader,
     TheInnerHeader,
+    TheProfileHeader,
   },
 })
 export default class Default extends Vue {
+  /**
+   * @name isProfile
+   * @returns {boolean}
+   * @description Проверяем маршрут пользователя на странице профиля
+   */
+  get isProfile(): boolean {
+    return Boolean(this.$route.name && (this.$route.name === 'profile' || this.$route.name === 'ads-create'));
+  }
   /**
    * @name isAuth
    * @returns {boolean}
